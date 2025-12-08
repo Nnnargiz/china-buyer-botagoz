@@ -42,18 +42,14 @@ const Header = () => {
       <div className="container">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <a
-            href="#"
+          <button
             className={`font-display text-lg md:text-xl font-bold transition-colors ${
               isScrolled ? "text-foreground" : "text-primary-foreground"
             }`}
-            onClick={(e) => {
-              e.preventDefault();
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }}
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
-            Ботагоз<span className="text-secondary">.</span>байер
-          </a>
+            Ж. Ботагоз
+          </button>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-1">
