@@ -41,15 +41,8 @@ const Header = () => {
     >
       <div className="container">
         <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo */}
-          <button
-            className={`font-display text-lg md:text-xl font-bold transition-colors ${
-              isScrolled ? "text-foreground" : "text-primary-foreground"
-            }`}
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          >
-            Ж. Ботагоз
-          </button>
+          {/* Spacer for layout */}
+          <div className="w-10" />
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-1">
