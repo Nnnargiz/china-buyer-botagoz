@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Search, CheckCircle, Package, Truck } from "lucide-react";
-import heroBg from "@/assets/hero-bg.jpg";
+import heroBg from "@1111.jpg";
 
 const benefits = [
   { icon: Search, text: "Поиск поставщиков на китайских платформах" },
