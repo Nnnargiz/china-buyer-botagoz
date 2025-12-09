@@ -44,7 +44,7 @@ const ContactForm = () => {
 
   if (isSubmitted) {
     return (
-      <section id="contact-form" className="py-20 md:py-28 bg-background">
+      <section id="contact-form" className="py-20 md:py-28 bg-card">
         <div className="container">
           <div className="max-w-2xl mx-auto text-center">
             <div className="w-20 h-20 rounded-full gold-gradient flex items-center justify-center mx-auto mb-6">
@@ -79,12 +79,12 @@ const ContactForm = () => {
   }
 
   return (
-    <section id="contact-form" className="py-20 md:py-28 bg-background">
+    <section id="contact-form" className="py-20 md:py-28 bg-card">
       <div className="container">
         <div className="max-w-2xl mx-auto">
           {/* Header */}
           <div className="text-center mb-12">
-            <span className="inline-block text-secondary font-medium mb-3 uppercase tracking-wider text-sm">
+            <span className="inline-block text-secondary font-semibold mb-3 uppercase tracking-wider text-sm">
               Заявка
             </span>
             <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
@@ -96,7 +96,7 @@ const ContactForm = () => {
           </div>
           
           {/* Form */}
-          <form onSubmit={handleSubmit} className="bg-card rounded-2xl p-6 md:p-10 card-shadow">
+          <form onSubmit={handleSubmit} className="bg-background border border-border rounded-2xl p-6 md:p-10 card-shadow">
             <div className="space-y-6">
               {/* Name */}
               <div>

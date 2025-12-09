@@ -30,12 +30,12 @@ const advantages = [
 
 const AdvantagesSection = () => {
   return (
-    <section id="advantages" className="py-20 md:py-28 bg-background">
+    <section id="advantages" className="py-20 md:py-28 bg-card">
       <div className="container">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left: Content */}
           <div>
-            <span className="inline-block text-secondary font-medium mb-3 uppercase tracking-wider text-sm">
+            <span className="inline-block text-secondary font-semibold mb-3 uppercase tracking-wider text-sm">
               Преимущества
             </span>
             <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-6">
@@ -51,7 +51,7 @@ const AdvantagesSection = () => {
               {advantages.map((advantage, index) => (
                 <div
                   key={index}
-                  className="flex items-start gap-4 p-4 rounded-xl bg-card card-shadow hover:card-shadow-hover transition-shadow duration-300"
+                  className="flex items-start gap-4 p-4 rounded-xl bg-background border border-border card-shadow hover:card-shadow-hover transition-shadow duration-300"
                 >
                   <div className="w-12 h-12 rounded-lg gold-gradient flex items-center justify-center flex-shrink-0">
                     <advantage.icon className="w-6 h-6 text-secondary-foreground" />
@@ -73,7 +73,7 @@ const AdvantagesSection = () => {
           <div className="hidden lg:block">
             <div className="relative">
               {/* Main card */}
-              <div className="bg-card rounded-2xl p-8 card-shadow">
+              <div className="bg-background border border-border rounded-2xl p-8 card-shadow">
                 <div className="aspect-square max-w-sm mx-auto hero-gradient rounded-xl flex items-center justify-center">
                   <div className="text-center text-primary-foreground">
                     <div className="text-6xl font-display font-bold mb-2">5+</div>
@@ -83,7 +83,7 @@ const AdvantagesSection = () => {
               </div>
               
               {/* Floating badges */}
-              <div className="absolute -top-4 -right-4 bg-card rounded-xl p-4 card-shadow">
+              <div className="absolute -top-4 -right-4 bg-card border border-border rounded-xl p-4 card-shadow">
                 <div className="flex items-center gap-2">
                   <div className="w-10 h-10 rounded-lg gold-gradient flex items-center justify-center">
                     <Shield className="w-5 h-5 text-secondary-foreground" />
@@ -95,7 +95,7 @@ const AdvantagesSection = () => {
                 </div>
               </div>
               
-              <div className="absolute -bottom-4 -left-4 bg-card rounded-xl p-4 card-shadow">
+              <div className="absolute -bottom-4 -left-4 bg-card border border-border rounded-xl p-4 card-shadow">
                 <div className="flex items-center gap-2">
                   <div className="w-10 h-10 rounded-lg gold-gradient flex items-center justify-center">
                     <Heart className="w-5 h-5 text-secondary-foreground" />

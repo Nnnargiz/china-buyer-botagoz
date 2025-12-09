@@ -30,11 +30,11 @@ const services = [
 
 const ServicesSection = () => {
   return (
-    <section id="services" className="py-20 md:py-28 bg-background">
+    <section id="services" className="py-20 md:py-28 bg-card">
       <div className="container">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="inline-block text-secondary font-medium mb-3 uppercase tracking-wider text-sm">
+          <span className="inline-block text-secondary font-semibold mb-3 uppercase tracking-wider text-sm">
             Услуги
           </span>
           <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
@@ -50,7 +50,7 @@ const ServicesSection = () => {
           {services.map((service, index) => (
             <div
               key={index}
-              className="group bg-card rounded-xl p-6 card-shadow hover:card-shadow-hover transition-all duration-300 hover:-translate-y-1"
+              className="group bg-background border border-border rounded-xl p-6 card-shadow hover:card-shadow-hover transition-all duration-300 hover:-translate-y-1"
             >
               {/* Icon */}
               <div className="w-14 h-14 rounded-xl gold-gradient flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">

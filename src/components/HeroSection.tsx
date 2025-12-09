@@ -21,7 +21,7 @@ const HeroSection = () => {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${heroBg})` }}
       >
-        <div className="absolute inset-0 hero-gradient opacity-85" />
+        <div className="absolute inset-0 hero-gradient opacity-90" />
       </div>
       
       {/* Content */}
@@ -30,7 +30,7 @@ const HeroSection = () => {
           {/* Main Heading */}
           <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-bold text-primary-foreground leading-tight mb-6 animate-fade-in">
             Профессиональный байер в Китае — 
-            <span className="text-secondary"> Жакыпбекова Ботагоз</span>
+            <span className="text-secondary"> Жакыпбекова Акбота</span>
           </h1>
           
           {/* Subtitle */}

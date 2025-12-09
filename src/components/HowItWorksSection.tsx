@@ -29,11 +29,11 @@ const steps = [
 
 const HowItWorksSection = () => {
   return (
-    <section id="how-it-works" className="py-20 md:py-28 bg-card">
+    <section id="how-it-works" className="py-20 md:py-28 bg-muted">
       <div className="container">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="inline-block text-secondary font-medium mb-3 uppercase tracking-wider text-sm">
+          <span className="inline-block text-secondary font-semibold mb-3 uppercase tracking-wider text-sm">
             Процесс
           </span>
           <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
