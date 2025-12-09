@@ -30,12 +30,12 @@ const faqs = [
 
 const FAQSection = () => {
   return (
-    <section id="faq" className="py-20 md:py-28 bg-card">
+    <section id="faq" className="py-20 md:py-28 bg-muted">
       <div className="container">
         <div className="max-w-3xl mx-auto">
           {/* Header */}
           <div className="text-center mb-12">
-            <span className="inline-block text-secondary font-medium mb-3 uppercase tracking-wider text-sm">
+            <span className="inline-block text-secondary font-semibold mb-3 uppercase tracking-wider text-sm">
               FAQ
             </span>
             <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
@@ -52,7 +52,7 @@ const FAQSection = () => {
               <AccordionItem
                 key={index}
                 value={`item-${index}`}
-                className="bg-background border border-border rounded-xl px-6 overflow-hidden"
+                className="bg-card border border-border rounded-xl px-6 overflow-hidden card-shadow"
               >
                 <AccordionTrigger className="text-left font-semibold text-foreground hover:text-secondary py-5 hover:no-underline">
                   {faq.question}

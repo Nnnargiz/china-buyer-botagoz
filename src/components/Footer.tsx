@@ -9,7 +9,7 @@ const Footer = () => {
           {/* Main Content */}
           <div className="text-center mb-12">
             <h3 className="text-2xl md:text-3xl font-display font-bold mb-4">
-              Жакыпбекова Ботагоз
+              Жакыпбекова Акбота
             </h3>
             <p className="text-primary-foreground/80 mb-2">
               Профессиональный байер в Китае
@@ -53,7 +53,7 @@ const Footer = () => {
               Байер в Китае • Поиск и закуп товаров под заказ
             </p>
             <p className="text-center text-primary-foreground/40 text-xs mt-4">
-              © {new Date().getFullYear()} Жакыпбекова Ботагоз. Все права защищены.
+              © {new Date().getFullYear()} Жакыпбекова Акбота. Все права защищены.
             </p>
           </div>
         </div>
