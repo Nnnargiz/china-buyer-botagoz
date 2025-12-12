@@ -58,7 +58,7 @@ const HeroSection = () => {
               Оставить заявку
             </Button>
             <Button variant="heroOutline" size="xl" asChild>
-              <a href="https://wa.me/" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/77077772629" target="_blank" rel="noopener noreferrer">
                 Написать в WhatsApp
               </a>
             </Button>
