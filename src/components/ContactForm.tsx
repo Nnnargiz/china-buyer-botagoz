@@ -86,34 +86,36 @@ ${formData.budget ? `💰 *Бюджет:* ${formData.budget}` : ""}
 
   if (isSubmitted) {
     return (
-      <section id="contact-form" className="py-20 md:py-28 bg-card">
+      <section id="contact-form" className="py-20 md:py-28 bg-card min-h-[600px] flex items-center">
         <div className="container">
-          <div className="max-w-2xl mx-auto text-center">
-            <div className="w-20 h-20 rounded-full gold-gradient flex items-center justify-center mx-auto mb-6">
-              <CheckCircle className="w-10 h-10 text-secondary-foreground" />
+          <div className="max-w-2xl mx-auto">
+            <div className="bg-background border border-border rounded-2xl p-6 md:p-10 card-shadow text-center">
+              <div className="w-20 h-20 rounded-full gold-gradient flex items-center justify-center mx-auto mb-6">
+                <CheckCircle className="w-10 h-10 text-secondary-foreground" />
+              </div>
+              <h2 className="text-3xl font-display font-bold text-foreground mb-4">
+                Спасибо за заявку!
+              </h2>
+              <p className="text-muted-foreground mb-8">
+                Ваша заявка отправлена. Я свяжусь с вами в ближайшее время.
+              </p>
+              <Button
+                variant="outline"
+                onClick={() => {
+                  setIsSubmitted(false);
+                  setFormData({
+                    name: "",
+                    contact: "",
+                    email: "",
+                    order: "",
+                    budget: "",
+                    preferredContact: "whatsapp",
+                  });
+                }}
+              >
+                Отправить еще одну заявку
+              </Button>
             </div>
-            <h2 className="text-3xl font-display font-bold text-foreground mb-4">
-              Спасибо за заявку!
-            </h2>
-            <p className="text-muted-foreground mb-8">
-              Ваша заявка отправлена. Я свяжусь с вами в ближайшее время.
-            </p>
-            <Button
-              variant="outline"
-              onClick={() => {
-                setIsSubmitted(false);
-                setFormData({
-                  name: "",
-                  contact: "",
-                  email: "",
-                  order: "",
-                  budget: "",
-                  preferredContact: "whatsapp",
-                });
-              }}
-            >
-              Отправить еще одну заявку
-            </Button>
           </div>
         </div>
       </section>
