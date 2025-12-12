@@ -4,8 +4,11 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Send, CheckCircle, MessageCircle, Phone } from "lucide-react";
+import { Send, CheckCircle, MessageCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+
+const TELEGRAM_BOT_TOKEN = "8382452511:AAE1cI7rPGW-pdm1WvBijCR0MsjgCOli1Cg";
+const TELEGRAM_CHAT_ID = "434119615";
 
 const ContactForm = () => {
   const { toast } = useToast();
@@ -26,20 +29,59 @@ const ContactForm = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const sendToTelegram = async () => {
+    const contactMethod = formData.preferredContact === "whatsapp" ? "WhatsApp" : "Telegram";
+    
+    const message = `🛒 *Новая заявка!*
+
+👤 *Имя:* ${formData.name}
+📱 *Контакт:* ${formData.contact}
+${formData.email ? `📧 *Email:* ${formData.email}` : ""}
+📦 *Заказ:* ${formData.order}
+${formData.budget ? `💰 *Бюджет:* ${formData.budget}` : ""}
+📞 *Способ связи:* ${contactMethod}`;
+
+    const response = await fetch(
+      `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          chat_id: TELEGRAM_CHAT_ID,
+          text: message,
+          parse_mode: "Markdown",
+        }),
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Failed to send message to Telegram");
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    
-    setIsLoading(false);
-    setIsSubmitted(true);
-    
-    toast({
-      title: "Заявка отправлена!",
-      description: "Я свяжусь с вами в ближайшее время.",
-    });
+    try {
+      await sendToTelegram();
+      setIsSubmitted(true);
+      toast({
+        title: "Заявка отправлена!",
+        description: "Я свяжусь с вами в ближайшее время.",
+      });
+    } catch (error) {
+      console.error("Error sending to Telegram:", error);
+      toast({
+        title: "Ошибка отправки",
+        description: "Попробуйте еще раз или свяжитесь напрямую.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   if (isSubmitted) {
@@ -201,13 +243,6 @@ const ContactForm = () => {
                     <Label htmlFor="telegram" className="flex items-center gap-2 cursor-pointer">
                       <Send className="w-4 h-4 text-[hsl(200,80%,50%)]" />
                       Telegram
-                    </Label>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <RadioGroupItem value="call" id="call" />
-                    <Label htmlFor="call" className="flex items-center gap-2 cursor-pointer">
-                      <Phone className="w-4 h-4 text-secondary" />
-                      Звонок
                     </Label>
                   </div>
                 </RadioGroup>
