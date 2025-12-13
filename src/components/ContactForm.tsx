@@ -29,7 +29,7 @@ const ContactForm = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const sendToTelegram = async () => {
+  const sendToTelegram = async (retryCount = 0): Promise<void> => {
     const contactMethod = formData.preferredContact === "whatsapp" ? "WhatsApp" : "Telegram";
     
     const message = `🛒 *Новая заявка!*
@@ -41,23 +41,39 @@ ${formData.email ? `📧 *Email:* ${formData.email}` : ""}
 ${formData.budget ? `💰 *Бюджет:* ${formData.budget}` : ""}
 📞 *Способ связи:* ${contactMethod}`;
 
-    const response = await fetch(
-      `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          chat_id: TELEGRAM_CHAT_ID,
-          text: message,
-          parse_mode: "Markdown",
-        }),
-      }
-    );
+    try {
+      const response = await fetch(
+        `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            chat_id: TELEGRAM_CHAT_ID,
+            text: message,
+            parse_mode: "Markdown",
+          }),
+        }
+      );
 
-    if (!response.ok) {
-      throw new Error("Failed to send message to Telegram");
+      if (!response.ok) {
+        const errorData = await response.text();
+        console.error("Telegram API error:", response.status, errorData);
+        throw new Error(`Telegram API error: ${response.status}`);
+      }
+
+      const result = await response.json();
+      console.log("Telegram message sent successfully:", result.ok);
+    } catch (error) {
+      console.error(`Attempt ${retryCount + 1} failed:`, error);
+      
+      // Retry up to 2 times with delay
+      if (retryCount < 2) {
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        return sendToTelegram(retryCount + 1);
+      }
+      throw error;
     }
   };
 
